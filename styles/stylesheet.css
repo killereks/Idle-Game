@@ -1,0 +1,29 @@
+.grid-square {
+    width: 50px;
+    height: 50px;
+    transition: 0.3s all cubic-bezier(0,0,1,0);
+    float: left;
+    background-color: #eaeaea;
+    margin: 0.1em;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.grid-square:nth-child(10n+1){
+    clear: both;
+}
+
+#boardGrid {
+    margin: 0 auto;
+}
+
+* {
+    transition: 0.3s ease-in-out all !important;
+}
+
+.grid-square.active {
+    background-color: #888;
+}

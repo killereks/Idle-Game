@@ -1,0 +1,68 @@
+<script src="libraries/decimal.js"></script>
+
+<script src="scripts/tools.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+<link rel="stylesheet" href="styles/stylesheet.css">
+
+<style>
+    .center {
+        text-align: center;
+    }
+
+</style>
+
+
+<script>
+    Decimal.set({
+        precision: 9
+    })
+
+</script>
+
+<div class="ui container">
+    <div class="ui secondary massive menu">
+        <a class="item" id="moneyDisplay">Money: 500</a>
+        <a class="item" id="moneyPerSecDisplay"></a>
+        <a class="item" onclick='OpenMenu("generators");'>Generators</a>
+        <a class="item" onclick='OpenMenu("board");'>Board</a>
+    </div>
+</div>
+
+<div class="ui horizontal divider"></div>
+
+<div class="ui container">
+    <div id="generators">
+        <table class="ui celled table">
+            <tbody id="generatorParent"></tbody>
+        </table>
+    </div>
+
+    <div id="board">
+        <div class="ui grid">
+            <div class="eight wide column">
+                <div id="boardGrid"></div>
+            </div>
+            <div class="eight wide column">
+                <div class="ui buttons fluid">
+                    <div class="ui button basic grey" id="square-cost">Square cost: 2.0</div>
+                    <button class="ui button" onclick='PurchaseSquare(1);'>Purchase 1x</button>
+                    <button class="ui button" onclick='PurchaseSquare(10);'>Purchase 10x</button>
+                    <button class="ui button" onclick='PurchaseSquare(100);'>Purchase 100x</button>
+                </div>
+                <div class="ui horizontal divider"></div>
+                <div class="ui label big">
+                    Global Multiplier
+                    <div class="detail" id="square-multiplier">x1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="scripts/squares.js"></script>
+<script src="scripts/generator.js"></script>
+<script src="scripts/main.js"></script>
+<script src="scripts/htmlInit.js"></script>
+<script src="scripts/menu.js"></script>
