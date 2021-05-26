@@ -3,13 +3,10 @@ function PurchaseSquare(amount){
         if (player.boxes.greaterThanOrEqualTo(player.squares.cost)){
             player.boxes = Decimal.sub(player.boxes, player.squares.cost);
             player.squares.amountFilled++;
-            
-            if (player.squares.amountFilled == 100){
-                player.squares.cost = Decimal.pow(15, player.squares.level);
-            }
             if (player.squares.amountFilled > 100){
                 player.squares.amountFilled = 0;
                 player.squares.level++;
+                player.squares.cost = Decimal.pow(15, player.squares.level);
             }
         }
     }
