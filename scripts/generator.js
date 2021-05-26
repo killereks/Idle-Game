@@ -14,7 +14,11 @@ function PurchaseGenerator(index){
 function GetGeneratorMultipliers(index){
     let gen = player.generators[index];
     
-    return Decimal.mul(gen.multiplier, player.squares.globalMultiplier);
+    var out = new Decimal(gen.multiplier);
+    out = Decimal.mul(out, player.squares.globalMultiplier);
+    out = Decimal.mul(out, player.research.generatorBoosts[index]);
+    
+    return out;
 }
 function GetGeneratorAmount(index){
     let gen = player.generators[index];

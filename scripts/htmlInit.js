@@ -1,7 +1,7 @@
-function MakeGenerators(){
+function MakeGenerators() {
     var html = ``;
-    
-    for (var i = 0; i < player.generators.length; i++){
+
+    for (var i = 0; i < player.generators.length; i++) {
         let gen = player.generators[i];
         html += `<tr>
                     <td>Box Generator ${NumToRoman(i+1)}</td>
@@ -10,19 +10,41 @@ function MakeGenerators(){
                     <td><button id="buy-gen-${i}-btn" class="ui button fluid" onclick="PurchaseGenerator(${i});"></button></td>
                 </tr>`;
     }
-    
+
     document.getElementById("generatorParent").innerHTML = html;
 }
 MakeGenerators();
 
 
-function CreateGrid(){
+function CreateGrid() {
     var html = ``;
-    
-    for (var i = 0; i < 100; i++){
+
+    for (var i = 0; i < 100; i++) {
         html += `<div class="grid-square" id="grid-square-${i}"></div>`;
     }
-    
+
     document.getElementById("boardGrid").innerHTML = html;
 }
 CreateGrid();
+
+
+function CreateResearch() {
+    var html = ``;
+
+    var index = 0;
+    
+    for (var module of player.research.buildings) {
+        html += `
+        <tr>
+            <td id="research-building-${index}-amount">${module.amount}</td>
+            <td>${module.name}</td>
+            <td id="research-building-${index}-power">${module.powerBase}</td>
+            <td><button onclick="PurchaseResearchBuilding(${index});" class="ui fluid button blue tiny">${shointsIcon} ${Simplify(module.priceBase,3)}</button></td>
+        </tr>`
+        
+        index++;
+    }
+    
+    document.getElementById("research-buildings-parent").innerHTML = html;
+}
+CreateResearch();

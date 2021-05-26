@@ -6,10 +6,11 @@ function PurchaseSquare(amount){
             if (player.squares.amountFilled > 100){
                 player.squares.amountFilled = 0;
                 player.squares.level++;
-                player.squares.cost = Decimal.pow(15, player.squares.level);
             }
         }
     }
+    
+    player.squares.cost = Decimal.pow(15, player.squares.level);
     
     for (var i = 0; i < 100; i++){
         document.getElementById(`grid-square-${i}`).classList.remove("active");
