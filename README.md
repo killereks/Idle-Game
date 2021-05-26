@@ -1,3 +1,3 @@
 # Idle-Game
 
-[Link to game](https://killereks.github.io/Idle-Game/home)
+[Link to game](https://killereks.github.io/Idle-Game/index)
