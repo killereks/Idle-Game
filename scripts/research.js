@@ -33,6 +33,10 @@ function GetResearchUpgrade(level){
     
     var randomIndex = randFunction() * 10;
     
+    if (level < 3){
+        randomIndex = 0;
+    }
+    
     return "Generator "+NumToRoman(Math.floor(randomIndex)+1)+" Boost";
 }
 
@@ -66,6 +70,9 @@ function ResearchApplyUpgrade(level){
     var randFunction = Math.seed(level);
     
     var randomIndex = Math.floor(randFunction() * 10);
+    if (level < 3){
+        randomIndex = 0;
+    }
     
     player.research.generatorBoosts[randomIndex] *= 2;
 }
