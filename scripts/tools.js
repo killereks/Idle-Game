@@ -10,7 +10,16 @@ function Simplify(bigNum, dp) {
 
     let index = (Decimal.log10(bigNum) / 3) | 0;
     let factor = Decimal.pow(10, index * 3);
+    
+    if (player.settings.numberFormatting == "euler"){
+        return Decimal.div(bigNum, factor).toFixed(dp)+"e"+(index*3);
+    } else if (player.settings.numberFormatting == "scientific"){
+        return Decimal.div(bigNum, factor).toFixed(dp)+`x10<sup>${index * 3}</sup>`;
+    } else if (player.settings.numberFormatting == "logarithmic"){
+        return Decimal.div(bigNum, factor).toFixed(dp)+`[${index}]`;
+    }
 
+    // number format = wordy
     var extra = "";
     if (index < names.length) {
         extra = names[index];

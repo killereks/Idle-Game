@@ -16,7 +16,7 @@ function UpdateResearch(dt){
     var secondsLeft = Decimal.div(Decimal.sub(player.research.energyMax, player.research.energy), player.research.energyPerSec);
     
     document.getElementById("research-time-left").innerHTML = "~"+secondsLeft.toFixed(1)+"s";
-    document.getElementById("research-watts").innerHTML = Simplify(player.research.energyPerSec);
+    document.getElementById("research-watts").innerHTML = Simplify(player.research.energyPerSec, 0 );
     
     var percentage = Decimal.mul(Decimal.div(player.research.energy, player.research.energyMax),100);
     percentage = Math.min(percentage, 100);

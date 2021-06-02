@@ -114,7 +114,13 @@ let player = {
                 powerBase: new Decimal(62000),
                 priceBase: new Decimal(10560280),
             }]
-    }
+    },
+    
+    settings: {
+        numberFormatting: "wordy"
+    },
+
+    skilltree: [],
 }
 
 const boxesIcon = `<i class="ui icon box"></i>`;

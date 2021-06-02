@@ -6,262 +6,269 @@
 <link rel="stylesheet" href="styles/stylesheet.css">
 
 <style>
-    .center {
-        text-align: center;
-    }
+	.center {
+		text-align: center;
+	}
 
 </style>
 
 
 <script>
-    Decimal.set({
-        precision: 9
-    })
+	Decimal.set({
+		precision: 9
+	})
 
 </script>
 
 <div class="ui container">
-    <div class="ui secondary massive menu">
-        <a class="item" id="moneyDisplay"></a>
-        <a class="item" id="shointsDisplay"></a>
-    </div>
-    <div class="ui secondary massive menu">
-        <a class="item" id="moneyPerSecDisplay"></a>
-    </div>
-    <div class="ui secondary pointing massive menu" id="mainMenu">
-        <a class="item" onclick='OpenMenu("generators", this);'><i class="icon boxes"></i> Generators</a>
-        <a class="item" onclick='OpenMenu("board", this);'><i class="chess board icon"></i> Board</a>
-        <a class="item" onclick='OpenMenu("research", this);'><i class="icon building outline"></i> Research</a>
-        <a class="item" onclick='OpenMenu("industry", this);'><i class="icon industry"></i> Industry</a>
-        <a class="item" onclick='OpenMenu("skilltree", this);'><i class="icon sitemap"></i> Skilltree</a>
-        <a class="item" onclick='OpenMenu("milestones", this);'><i class="icon trophy"></i> Milestones</a>
-        <a class="item" onclick='OpenMenu("challenges", this);'><i class="clipboard list icon"></i> Challenges</a>
-        <a class="item right floated" onclick='OpenMenu("settings", this);'><i class="icon cog"></i> Settings</a>
-    </div>
+	<div class="ui secondary massive menu">
+		<a class="item" id="moneyDisplay"></a>
+		<a class="item" id="shointsDisplay"></a>
+	</div>
+	<div class="ui secondary massive menu">
+		<a class="item" id="moneyPerSecDisplay"></a>
+	</div>
+	<div class="ui secondary pointing massive menu" id="mainMenu">
+		<a class="item" onclick='OpenMenu("generators", this);'><i class="icon boxes"></i> Generators</a>
+		<a class="item" onclick='OpenMenu("board", this);'><i class="chess board icon"></i> Board</a>
+		<a class="item" onclick='OpenMenu("research", this);'><i class="icon building outline"></i> Research</a>
+		<a class="item" onclick='OpenMenu("industry", this);'><i class="icon industry"></i> Industry</a>
+		<a class="item" onclick='OpenMenu("skilltree", this);'><i class="icon sitemap"></i> Skilltree</a>
+		<a class="item" onclick='OpenMenu("milestones", this);'><i class="icon trophy"></i> Milestones</a>
+		<a class="item" onclick='OpenMenu("challenges", this);'><i class="clipboard list icon"></i> Challenges</a>
+		<a class="item right floated" onclick='OpenMenu("settings", this);'><i class="icon cog"></i> Settings</a>
+	</div>
 </div>
 
 <div class="ui horizontal divider"></div>
 
 <div class="ui container">
-    <div id="generators">
-        <table class="ui celled table">
-            <tbody id="generatorParent"></tbody>
-        </table>
-    </div>
+	<div id="generators">
+		<table class="ui celled table">
+			<tbody id="generatorParent"></tbody>
+		</table>
+	</div>
 
-    <div id="board">
-        <div class="ui grid">
-            <div class="eight wide column">
-                <div id="boardGrid"></div>
-            </div>
-            <div class="eight wide column">
-                <div class="ui buttons fluid">
-                    <div class="ui button basic grey" id="square-cost">Square cost: 2.0</div>
-                    <button class="ui button" onclick='PurchaseSquare(1);'>Purchase 1x</button>
-                    <button class="ui button" onclick='PurchaseSquare(10);'>Purchase 10x</button>
-                    <button class="ui button" onclick='PurchaseSquare(100);'>Purchase 100x</button>
-                </div>
-                <div class="ui horizontal divider"></div>
-                <div class="ui label big">
-                    Global Multiplier
-                    <div class="detail" id="square-multiplier">x1</div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div id="board">
+		<div class="ui grid">
+			<div class="eight wide column">
+				<div id="boardGrid"></div>
+			</div>
+			<div class="eight wide column">
+				<div class="ui buttons fluid">
+					<div class="ui button basic grey" id="square-cost">Square cost: 2.0</div>
+					<button class="ui button" onclick='PurchaseSquare(1);'>Purchase 1x</button>
+					<button class="ui button" onclick='PurchaseSquare(10);'>Purchase 10x</button>
+					<button class="ui button" onclick='PurchaseSquare(100);'>Purchase 100x</button>
+				</div>
+				<div class="ui horizontal divider"></div>
+				<div class="ui label big">
+					Global Multiplier
+					<div class="detail" id="square-multiplier">x1</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <div id="research">
-        <div class="ui grid">
-            <div class="ui eight wide column">
-                <div class="ui statistics centered mini" style="display: flex; justify-content: center;">
-                    <div class="ui statistic tiny blue">
-                        <div class="value" id=research-time-left>13s</div>
-                        <div class="label">to unlock</div>
-                    </div>
-                    <div class="ui statistic green">
-                        <div class="value" id=research-next-upgrade>Generator I Boost</div>
-                        <div class="label">next unlock</div>
-                    </div>
-                    <div class="ui statistic red">
-                        <div class="value" id=research-watts>50</div>
-                        <div class="label">Watts per second</div>
-                    </div>
-                </div>
-                <div class="ui horizontal divider"></div>
-                <div class="ui progress blue">
-                    <div class="bar" id="research-progress-bar">
-                        <div class="progress" id="research-progress-value">0%</div>
-                    </div>
-                    <div class="label" id="research-progress-label">
-                        50 / 500 Watts
-                    </div>
-                </div>
+	<div id="research">
+		<div class="ui grid">
+			<div class="ui eight wide column">
+				<div class="ui statistics centered mini" style="display: flex; justify-content: center;">
+					<div class="ui statistic tiny blue">
+						<div class="value" id=research-time-left>13s</div>
+						<div class="label">to unlock</div>
+					</div>
+					<div class="ui statistic green">
+						<div class="value" id=research-next-upgrade>Generator I Boost</div>
+						<div class="label">next unlock</div>
+					</div>
+					<div class="ui statistic red">
+						<div class="value" id=research-watts>50</div>
+						<div class="label">Watts per second</div>
+					</div>
+				</div>
+				<div class="ui horizontal divider"></div>
+				<div class="ui progress blue">
+					<div class="bar" id="research-progress-bar">
+						<div class="progress" id="research-progress-value">0%</div>
+					</div>
+					<div class="label" id="research-progress-label">
+						50 / 500 Watts
+					</div>
+				</div>
 
-            </div>
-            <div class="ui eight wide column">
-                <table class="ui very basic collapsing celled table small">
-                    <thead>
-                        <tr>
-                            <th>Amount</th>
-                            <th>Name</th>
-                            <th>Power / sec</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody id="research-buildings-parent"></tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+			</div>
+			<div class="ui eight wide column">
+				<table class="ui very basic collapsing celled table small">
+					<thead>
+						<tr>
+							<th>Amount</th>
+							<th>Name</th>
+							<th>Power / sec</th>
+							<th>Price</th>
+						</tr>
+					</thead>
+					<tbody id="research-buildings-parent"></tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 
-    <div id="industry">
-        <div class="ui secondary menu">
-            <a class="item">Crafting</a>
-            <a class="item">Resources</a>
-            <a class="item">Gathering</a>
-        </div>
-    </div>
+	<div id="industry">
+		<div class="ui secondary menu">
+			<a class="item">Crafting</a>
+			<a class="item">Resources</a>
+			<a class="item">Gathering</a>
+		</div>
+	</div>
 
-    <div id="skilltree">
-        <div class="ui grid">
-            <div class="four wide column">
-                <button class="skilltree-btn">
-                    x2 <i class="icon right arrow"></i> x2.2<br>boost to generators per purchase.
-                </button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">
-                    50% discount to generators.
-                </button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">First 5 seconds after purchasing generators get a x10 boost.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">Gain a generator boost based on time spent in current prestige.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">Unlock 5th generator.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">Unlock 6th generator.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">Unlock 7th generator.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">Unlock 8th generator.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">Gain a generator boost based on completed achievements.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">Research is 5x faster.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">Start with a Wind Turbine.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">Research receives a boost based on time spent in current prestige.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">Collecting resources in Industry is much faster.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">Start with 1x 4th generator after prestige.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">Start with 1 million squares.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-            <div class="four wide column">
-                <button class="skilltree-btn">Unlock Blackmarket.</button>
-                <div class="skilltree-cost">1000 prestige points</div>
-            </div>
-        </div>
-    </div>
+	<div id="skilltree">
+		<div class="ui grid" id=skilltreeParent></div>
+	</div>
 
-    <div id="challenges">
-        <div class="ui cards small centered">
-            <div class="card">
-                <div class="ui label top attached green">Double Trouble</div>
-                <div class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo doloremque, rem dolorum dignissimos vitae, impedit eligendi veritatis illum. Similique consequatur ad veniam expedita voluptatibus praesentium nihil culpa vero sed sequi?
-                </div>
-                <div class="content">
-                   <div class="ui label">
-                       Reward
-                       <div class="detail">Automate 1st <i class="icon box"></i>Generator.</div>
-                   </div>
-                </div>
-                <div class="extra content">
-                    Best time: 3h 56m 23s 953ms
-                </div>
-                <button class="ui button bottom attached">Start Challenge</button>
-            </div>
-        </div>
-    </div>
+	<div id="challenges">
+		<div class="ui cards small centered">
+			<div class="card">
+				<div class="ui label top attached green">Double Trouble</div>
+				<div class="content">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo doloremque, rem dolorum dignissimos vitae, impedit eligendi veritatis illum. Similique consequatur ad veniam expedita voluptatibus praesentium nihil culpa vero sed sequi?
+				</div>
+				<div class="content">
+					<div class="ui label">
+						Reward
+						<div class="detail">Automate 1st <i class="icon box"></i>Generator.</div>
+					</div>
+				</div>
+				<div class="extra content">
+					Best time: 3h 56m 23s 953ms
+				</div>
+				<button class="ui button bottom attached">Start Challenge</button>
+			</div>
+		</div>
+	</div>
 
-    <div id="milestones">
-        <div class="ui statistic blue" style="margin: 0 auto; display: block;">
-            <div class="value">Milestones</div>
-            <div class="label">1 out of 8 unlocked.</div>
-        </div>
-        <div class="ui horizontal divider"></div>
-        <div class="milestone">
-            <div class="milestone-req">Prestige once.</div> Unlock "Industry" tab.
-        </div>
-        <div class="milestone milestone-hidden">
-            <div class="milestone-req">Prestige twice.</div> Unlock "Skilltree" tab.
-        </div>
-        <div class="milestone milestone-hidden">
-            <div class="milestone-req">Prestige 3 times.</div> Start with 10,000 boxes.
-        </div>
-        <div class="milestone milestone-hidden">
-            <div class="milestone-req">Prestige 4 times.</div> Unlock automation for Generators.
-        </div>
-        <div class="milestone milestone-hidden">
-            <div class="milestone-req">Prestige 5 times.</div> Unlock automation for Research.
-        </div>
-        <div class="milestone milestone-hidden">
-            <div class="milestone-req">Prestige 6 times.</div> Unlock challenges.
-        </div>
-        <div class="milestone milestone-hidden">
-            <div class="milestone-req">Prestige 7 times.</div> Start with 1e20 boxes.
-        </div>
-        <div class="milestone milestone-hidden">
-            <div class="milestone-req">Prestige 8 times.</div> Unlock ascension.
-        </div>
-    </div>
+	<div id="milestones">
+		<div class="ui statistic blue" style="margin: 0 auto; display: block;">
+			<div class="value">Milestones</div>
+			<div class="label">1 out of 8 unlocked.</div>
+		</div>
+		<div class="ui horizontal divider"></div>
+		<div class="milestone">
+			<div class="milestone-req">Prestige once.</div> Unlock "Industry" tab.
+		</div>
+		<div class="milestone milestone-hidden">
+			<div class="milestone-req">Prestige twice.</div> Unlock "Skilltree" tab.
+		</div>
+		<div class="milestone milestone-hidden">
+			<div class="milestone-req">Prestige 3 times.</div> Start with 10,000 boxes.
+		</div>
+		<div class="milestone milestone-hidden">
+			<div class="milestone-req">Prestige 4 times.</div> Unlock automation for Generators.
+		</div>
+		<div class="milestone milestone-hidden">
+			<div class="milestone-req">Prestige 5 times.</div> Unlock automation for Research.
+		</div>
+		<div class="milestone milestone-hidden">
+			<div class="milestone-req">Prestige 6 times.</div> Unlock challenges.
+		</div>
+		<div class="milestone milestone-hidden">
+			<div class="milestone-req">Prestige 7 times.</div> Start with 1e20 boxes.
+		</div>
+		<div class="milestone milestone-hidden">
+			<div class="milestone-req">Prestige 8 times.</div> Unlock ascension.
+		</div>
+	</div>
 
-    <div id="settings">
-        <div class="ui grid">
-            <div class="four wide column">
-                <div class="ui vertical fluid tabular menu">
-                    <a class="active item"><i class="icon computer"></i> General</a>
-                    <a class="item"><i class="icon microchip"></i> Automation</a>
-                    <a class="item"><i class="icon save"></i> Save</a>
-                    <a class="item"><i class="icon clipboard list"></i> Changelog</a>
-                    <a class="item"><i class="icon bar chart"></i> Statistics</a>
-                    <a class="item"><i class="icon user"></i> Credits</a>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div id="settings">
+		<div class="ui grid">
+			<div class="four wide column">
+				<div class="ui vertical fluid tabular menu" id="settingsMenu">
+					<a class="active item" onclick='OpenSettingsMenu("general", this);'><i class="icon computer"></i> General</a>
+					<a class="item" onclick='OpenSettingsMenu("automation", this);'><i class="icon microchip"></i> Automation</a>
+					<a class="item" onclick='OpenSettingsMenu("save", this);'><i class="icon save"></i> Save</a>
+					<a class="item" onclick='OpenSettingsMenu("changelog", this);'><i class="icon clipboard list"></i> Changelog</a>
+					<a class="item" onclick='OpenSettingsMenu("statistics", this);'><i class="icon bar chart"></i> Statistics</a>
+					<a class="item" onclick='OpenSettingsMenu("credits", this);'><i class="icon user"></i> Credits</a>
+				</div>
+			</div>
+			<div class="twelve wide column">
+				<div id="settings_general">
+					<div class="ui compact menu">
+						<div class="ui simple dropdown item">
+							Number Formatting
+							<i class="dropdown icon"></i>
+							<div class="menu">
+								<div class="item" onclick='player.settings.numberFormatting="wordy";'>120 Thousand</div>
+								<div class="item" onclick='player.settings.numberFormatting="euler";'>120e3</div>
+								<div class="item" onclick='player.settings.numberFormatting="scientific";'>120x10<sup>3</sup></div>
+								<div class="item" onclick='player.settings.numberFormatting="logarithmic";'>120[1]</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="settings_automation">
+					
+				</div>
+				<div id="settings_save">
+					<div class="ui label teal">
+						Last saved:
+						<div class="detail">5s ago</div>
+					</div>
+					<div class="ui horizontal divider"></div>
+					<div class="ui buttons">
+						<button class="ui button teal"><i class="icon save"></i> Manual save</button>
+						<div class="or"></div>
+						<button class="ui button teal"><i class="icon spinner"></i> Manual load</button>
+					</div>
+					<button class="ui button red right floated"><i class="icon save"></i> Hard reset</button>
+					<div class="ui segment">
+						<div class="ui labeled input fluid">
+							<button class="ui button label"><i class="arrow down icon"></i> Import</button>
+							<input type="text">
+						</div>
+						<div class="ui horizontal divider">OR</div>
+						<div class="ui labeled input fluid">
+							<button class="ui button label"><i class="arrow up icon"></i> Export</button>
+							<input type="text">
+						</div>
+					</div>
+				</div>
+				<div id="settings_changelog" id="changelog">
+					<div class="ui list">
+						<div class="header">02/06/2021</div>
+						<div class="item">
+							<div class="ui label green">FEATURE</div> Added "Industry" "Skilltree" "Milestones" "Challenges" and "Settings".
+						</div>
+						<div class="item">
+							<div class="ui label green">FEATURE</div> Added number formatting in "Settings/General"
+						</div>
+						<div class="item">
+							<div class="ui label purple">UI</div> Started working on UI on the settings page.
+						</div>
+					</div>
+				</div>
+				<div id="settings_statistics">
+					Statistics
+				</div>
+				<div id="settings_credits">
+					<p>No way you actually checked out the credits!</p>
+					<p>The game has been designed and programmed by killereks. (Me!)</p>
+					<div class="ui divided horizontal list big fluid">
+						<div class="item">
+							<a href="https://www.youtube.com/c/killereks" target="_blank"><i class="icon youtube"></i> .killereks</a>
+						</div>
+						<div class="item">
+							<a href="https://www.patreon.com/join/killereks" target="_blank"><i class="patreon icon"></i> killereks</a>
+						</div>
+						<div class="item">
+							<a href="https://codepen.io/killerek" target="_blank"><i class="codepen icon"></i> killerek</a>
+						</div>
+					</div>
+					<p>&copy; 2021 killereks All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 
@@ -271,3 +278,5 @@
 <script src="scripts/htmlInit.js"></script>
 <script src="scripts/research.js"></script>
 <script src="scripts/menu.js"></script>
+<script src="scripts/settings.js"></script>
+<script src="scripts/skilltree.js"></script>
