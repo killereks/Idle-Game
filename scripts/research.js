@@ -16,7 +16,7 @@ function UpdateResearch(dt){
     var secondsLeft = Decimal.div(Decimal.sub(player.research.energyMax, player.research.energy), player.research.energyPerSec);
     
     document.getElementById("research-time-left").innerHTML = "~"+secondsLeft.toFixed(1)+"s";
-    document.getElementById("research-watts").innerHTML = Simplify(player.research.energy);
+    document.getElementById("research-watts").innerHTML = Simplify(player.research.energyPerSec);
     
     var percentage = Decimal.mul(Decimal.div(player.research.energy, player.research.energyMax),100);
     percentage = Math.min(percentage, 100);
@@ -42,7 +42,8 @@ function GetResearchUpgrade(level){
 
 function GetResearchBuildingCost(index){
     var building = player.research.buildings[index];
-    return Decimal.mul(building.priceBase, Decimal.pow(3, building.amount));
+    return building.priceBase;
+    //return Decimal.mul(building.priceBase, Decimal.pow(3, building.amount));
 }
 
 function PurchaseResearchBuilding(index){
