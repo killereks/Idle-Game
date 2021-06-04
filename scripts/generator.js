@@ -15,7 +15,6 @@ function GetGeneratorMultipliers(index){
     let gen = player.generators[index];
     
     var out = new Decimal(gen.multiplier);
-    out = Decimal.mul(out, player.squares.globalMultiplier);
     out = Decimal.mul(out, player.research.generatorBoosts[index]);
     
     return out;
@@ -36,6 +35,10 @@ function UpdateGenerators(deltaTime){
         let amountToAdd = GetGeneratorAmount(i);
         
         nextGenerator.amount = Decimal.add(nextGenerator.amount, Decimal.mul(amountToAdd, deltaTime));
+		
+		if (Math.random() * 100 <= GetLiraChance() * dt){
+			player.liras = Decimal.add(player.liras, GetLiraAmount());
+		}
     }
 }
 

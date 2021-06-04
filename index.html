@@ -24,6 +24,7 @@
 	<div class="ui secondary massive menu">
 		<a class="item" id="moneyDisplay"></a>
 		<a class="item" id="shointsDisplay"></a>
+		<a class="item" id="liraDisplay"></a>
 	</div>
 	<div class="ui secondary massive menu">
 		<a class="item" id="moneyPerSecDisplay"></a>
@@ -57,15 +58,12 @@
 			<div class="eight wide column">
 				<div class="ui buttons fluid">
 					<div class="ui button basic grey" id="square-cost">Square cost: 2.0</div>
-					<button class="ui button" onclick='PurchaseSquare(1);'>Purchase 1x</button>
-					<button class="ui button" onclick='PurchaseSquare(10);'>Purchase 10x</button>
-					<button class="ui button" onclick='PurchaseSquare(100);'>Purchase 100x</button>
+					<button class="ui button" onclick='PurchaseSquare(1);' id="square-1-btn">Purchase 1x</button>
+					<button class="ui button" onclick='PurchaseSquare(10);' id="square-10-btn">Purchase 10x</button>
+					<button class="ui button" onclick='PurchaseSquare(100);' id="square-100-btn">Purchase 100x</button>
 				</div>
 				<div class="ui horizontal divider"></div>
-				<div class="ui label big">
-					Global Multiplier
-					<div class="detail" id="square-multiplier">x1</div>
-				</div>
+				<div id="square-multiplier">x1</div>
 			</div>
 		</div>
 	</div>
@@ -207,7 +205,9 @@
 					</div>
 				</div>
 				<div id="settings_automation">
-					
+					<div class="ui four cards" id="generatorAutomationParent">
+						
+					</div>
 				</div>
 				<div id="settings_save">
 					<div class="ui label teal">
@@ -280,3 +280,4 @@
 <script src="scripts/menu.js"></script>
 <script src="scripts/settings.js"></script>
 <script src="scripts/skilltree.js"></script>
+<script src="scripts/autobuyers.js"></script>

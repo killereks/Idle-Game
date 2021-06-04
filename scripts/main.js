@@ -1,6 +1,7 @@
 let player = {
     boxes: new Decimal(1),
     shoints: new Decimal(0),
+	liras: new Decimal(0),
     
     generators: [{
         amount: new Decimal(0),
@@ -69,7 +70,6 @@ let player = {
         amountFilled: 0,
         level: 0,
         items: [],
-        globalMultiplier: 1,
     },
     
     research: {
@@ -121,10 +121,15 @@ let player = {
     },
 
     skilltree: [],
+	
+	automation: {
+		boxGenerators: new Array(10).fill(false),
+	}
 }
 
 const boxesIcon = `<i class="ui icon box"></i>`;
 const shointsIcon = `<i class="ui icon square"></i>`;
+const liraIcon = `<i class="ui icon gem"></i>`;
 
 var fps = 30;
 var dt = 1/fps;
@@ -135,10 +140,13 @@ function Loop(){
     document.getElementById("moneyPerSecDisplay").innerHTML = boxesIcon+Simplify(GetGeneratorAmount(0),2)+" / sec";
     
     document.getElementById("shointsDisplay").innerHTML = shointsIcon+Simplify(player.shoints);
+	document.getElementById("liraDisplay").innerHTML = liraIcon+Simplify(player.liras, 3);
     
     UpdateGenerators(dt);
     UpdateGeneratorButtons();
     UpdateResearch(dt);
+	AutobuyGenerators();
+	SquaresBtnHighlight();
     
     for (var i = 0; i < player.generators.length; i++){
         if (player.generators[i].amount.greaterThan(0)){
@@ -153,4 +161,5 @@ function Loop(){
 window.addEventListener("load", function(){
     Loop();
     PurchaseSquare(0);
+	ToggleGeneratorAutomation();
 })

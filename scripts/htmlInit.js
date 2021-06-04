@@ -48,3 +48,23 @@ function CreateResearch() {
     document.getElementById("research-buildings-parent").innerHTML = html;
 }
 CreateResearch();
+
+
+function GeneratorAutomationSettings(){
+	var html = ``;
+	
+	for (var i = 0; i < 10; i++){
+		html += `<div class="card">
+					<div class="ui top attached label">Box Generator ${NumToRoman(i+1)} Autobuyer.</div>
+					<div class="content">
+						<div class="ui checkbox">
+							<input type="checkbox" id="automate_generator_${i}" onclick='ToggleGeneratorAutomation()' checked>
+							<label>Enabled?</label>
+						</div>
+					</div>
+				</div>`;
+	}
+	
+	document.getElementById("generatorAutomationParent").innerHTML = html;
+}
+GeneratorAutomationSettings();
